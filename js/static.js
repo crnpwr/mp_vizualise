@@ -25,3 +25,34 @@ const defaultExplainerContent = `
 
 // Call the function to populate the explainer panel
 populateExplainerPanel();
+
+// Show/hide popup on mobile
+function setupPanelPopup() {
+  const infoPanel = document.getElementById('info-panel');
+  const openBtn = document.getElementById('open-panel-btn');
+  const closeBtn = document.getElementById('close-panel-btn');
+
+  function checkScreen() {
+    if (window.innerWidth <= 820) {
+      openBtn.style.display = 'block';
+      closeBtn.style.display = 'block';
+      infoPanel.classList.remove('popup-open');
+    } else {
+      openBtn.style.display = 'none';
+      closeBtn.style.display = 'none';
+      infoPanel.classList.remove('popup-open');
+    }
+  }
+
+  openBtn.addEventListener('click', () => {
+    infoPanel.classList.add('popup-open');
+  });
+  closeBtn.addEventListener('click', () => {
+    infoPanel.classList.remove('popup-open');
+  });
+
+  window.addEventListener('resize', checkScreen);
+  checkScreen();
+}
+
+setupPanelPopup();

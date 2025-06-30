@@ -59,8 +59,8 @@ const handleMouseEvents = (data, value_field) => {
             d3.select(".tooltip-content")
                 .select(".mp-name")
                 .attr("x", 50) // Center the text horizontally
-                .attr("y", 70) // Position the text below the image
-                .style("font-size", "14px")
+                .attr("y", 75) // Position the text below the image
+                .style("font-size", "12px")
                 .style("font-weight", 500);
 
 
@@ -77,9 +77,16 @@ const handleMouseEvents = (data, value_field) => {
             console.log("Circle clicked:", d);
             // Use selectCircle to enlarge the clicked circle
             selectCircle(d.mp_id, true);
+            // Change column header text
+            d3.select("#explainer-header")
+                .text("MP Spotlight");
             // ;
             d3.select("#explainer-panel")
                 .html(d['mp_infobox_html']);
+            
+            if (window.innerWidth <= 820) {
+                    document.getElementById('info-panel').classList.add('popup-open');
+                };
         })
         .on("clickout", (e, d) => {;
             // Log the click event and the data associated with the clicked circle

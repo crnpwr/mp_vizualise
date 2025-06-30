@@ -1,7 +1,7 @@
 //import { createSwarmTooltip } from './tooltips.js';
 
 // Load the data here
-d3.csv("data/mp_data_summary.csv", d3.autoType).then(data => {
+d3.csv("/data/mp_data_summary.csv", d3.autoType).then(data => {
     console.log("mp data", data);
     drawAccomSwarm(data, "expenses_total", true); // Draw the swarm graph with the total expenses
     createExpenseFilterButtons(data); // Create expense filter buttons
@@ -229,8 +229,8 @@ const createSwarmTooltip = (data) => {
         .attr("height", tooltipHeight)
         .attr("rx", 3)
         .attr("ry", 3)
-        .attr("fill", "#78b82a") // mintGreen
-        .attr("fill-opacity", 0.75);
+        .attr("fill", paleAqua) // mintGreen
+        .attr("fill-opacity", 0.85);
 
     const tooltipContent = tooltip.append("g")
         .attr("class", "tooltip-content");
