@@ -1,7 +1,7 @@
 //import { createSwarmTooltip } from './tooltips.js';
 
 // Load the data here
-d3.csv("data/mp_data_summary.csv", d3.autoType).then(data => {
+d3.csv("mp_vizualise/data/mp_data_summary.csv", d3.autoType).then(data => {
     console.log("mp data", data);
     drawAccomSwarm(data, "expenses_total", true); // Draw the swarm graph with the total expenses
     createExpenseFilterButtons(data); // Create expense filter buttons
