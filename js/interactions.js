@@ -78,10 +78,12 @@ const handleMouseEvents = (data, value_field) => {
             console.log("Circle clicked:", d);
             // Use selectCircle to enlarge the clicked circle
             selectCircle(d.mp_id, true);
+
             // Change column header text
             d3.select("#explainer-header")
                 .text("MP Spotlight");
-            // ;
+                
+            // Populate the explainer panel with the clicked MP's information
             d3.select("#explainer-panel")
                 .html(d['mp_infobox_html']);
             
@@ -89,7 +91,7 @@ const handleMouseEvents = (data, value_field) => {
                     document.getElementById('info-panel').classList.add('popup-open');
                 };
         })
-        .on("clickout", (e, d) => {;
+        /*.on("clickout", (e, d) => {;
             // Log the click event and the data associated with the clicked circle
             console.log("Circle clicked out:", d);
             // Use selectCircle to shrink the clicked circle
@@ -97,7 +99,7 @@ const handleMouseEvents = (data, value_field) => {
             // ;
             d3.select("#explainer-panel")
                 .html(``);
-        });
+        })*/;
 };
 
 // Function to update the opacity of circles, highlighting or dimming them based on the inclusions list

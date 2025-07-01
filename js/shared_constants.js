@@ -30,4 +30,5 @@ const mpFilters = [
     { id: "landlords", name: "Landlords", field: "is_landlord", value: "True", emoji: "💰" },
     { id: "anti-renters", name: "Voted Against Renters Rights", field: "vote_1905_response_filter", value: "True", emoji: "🚫🏠"},
     { id: "anti-gas", name: "Voted Against Winter Fuel Allowance", field: "vote_1841_response_filter", value: "True", emoji: "❄️💸"},
+    { id: "claims-utilities", name: "Claimed for their own utility bills", field: "claimed_for_utilities", value: "True", emoji: "🔥💸" },
 ];
