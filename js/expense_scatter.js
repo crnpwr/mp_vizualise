@@ -93,8 +93,8 @@ const createMPFilterButtons = async (data) => {
 const drawAccomSwarm = (data, value_field, draw_new) => {
     // Set constants
     const margin = {top: 5, left: 40, right: 40, bottom: 20};
-    const width = 500;
-    const height = 400;
+    const width = 450;
+    const height = 500;
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
@@ -103,6 +103,8 @@ const drawAccomSwarm = (data, value_field, draw_new) => {
         // Append SVG container
         const svg = d3.select("#accom-swarm")
             .append("svg")
+                .attr("width", "100%")
+                .attr("height", "100%")
                 .attr("viewBox", `0, 0, ${width}, ${height}`);
 
         // Append inner chart group
@@ -110,6 +112,12 @@ const drawAccomSwarm = (data, value_field, draw_new) => {
             .append("g")
             .attr("class", "inner-chart")
                 .attr("transform", `translate(${margin.left}, ${margin.top})`);
+        
+        // Add click handler to SVG background to reset highlights
+        svg.on("click", function() {
+            selectCircle(0); // Reset circle selection
+            populateExplainerPanel();
+    });
     } else {
         // If not drawing a new chart, just select the existing innerChart
         innerChart = d3.select("#accom-swarm").select(".inner-chart");

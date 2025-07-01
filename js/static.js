@@ -4,6 +4,10 @@ const populateExplainerPanel = () => {
         .style("top", "20px")
         .style("margin-bottom", "20px");
 
+    // Set the header text for the explainer panel
+    d3.select("#explainer-header")
+        .text("About this project");
+
     const explainerPanel = d3.select("#explainer-panel");
 
     explainerPanel.html(defaultExplainerContent);
@@ -19,8 +23,6 @@ const defaultExplainerContent = `
         <p align="right">Hover over the circles to see more details about each MP's expenses.</p>
         <p align="right">Try clicking on an MP to see more about them.</p>
         <p align="right">Or try clicking HERE to see a particularly interesting MP.</p>
-        <p align="right">Data sources: <a href="https://www.theipsa.org.uk/mp-staffing-business-costs" target="_blank">IPSA</a>, 
-        <a href="https://www.parliament.uk" target="_blank">Parliament</a></p>
     `
 
 // Call the function to populate the explainer panel
@@ -56,3 +58,8 @@ function setupPanelPopup() {
 }
 
 setupPanelPopup();
+
+// Automatically open the popup on small screens when the page loads
+if (window.innerWidth <= 820) {
+  document.getElementById('info-panel').classList.add('popup-open');
+}

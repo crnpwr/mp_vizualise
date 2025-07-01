@@ -73,6 +73,7 @@ const handleMouseEvents = (data, value_field) => {
                 .attr("transform", `translate(0,1000)`);
         })
         .on("click", (e, d) => {
+            e.stopPropagation();
             // Log the click event and the data associated with the clicked circle
             console.log("Circle clicked:", d);
             // Use selectCircle to enlarge the clicked circle
