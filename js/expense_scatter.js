@@ -1,7 +1,9 @@
 //import { createSwarmTooltip } from './tooltips.js';
 
+let mpData = [];
 // Load the data here
 d3.csv("data/mp_data_summary.csv", d3.autoType).then(data => {
+    //mpData = data;
     console.log("mp data", data);
     drawAccomSwarm(data, "expenses_total", true); // Draw the swarm graph with the total expenses
     createExpenseFilterButtons(data); // Create expense filter buttons
@@ -264,6 +266,9 @@ const drawAccomSwarm = (data, value_field, draw_new) => {
 
     // Call updateCircleOpacity with the array
     updateCircleOpacity(allNumbers);
+
+    // Restore explainer panel to default
+    populateExplainerPanel();
 
 };
 

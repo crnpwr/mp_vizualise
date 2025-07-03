@@ -74,33 +74,25 @@ const handleMouseEvents = (data, value_field) => {
         })
         .on("click", (e, d) => {
             e.stopPropagation();
-            // Log the click event and the data associated with the clicked circle
-            console.log("Circle clicked:", d);
-            // Use selectCircle to enlarge the clicked circle
-            selectCircle(d.mp_id, true);
-
-            // Change column header text
-            d3.select("#explainer-header")
-                .text("MP Spotlight");
-                
-            // Populate the explainer panel with the clicked MP's information
-            d3.select("#explainer-panel")
-                .html(d['mp_infobox_html']);
-            
-            if (window.innerWidth <= 820) {
-                    document.getElementById('info-panel').classList.add('popup-open');
-                };
-        })
-        /*.on("clickout", (e, d) => {;
-            // Log the click event and the data associated with the clicked circle
-            console.log("Circle clicked out:", d);
-            // Use selectCircle to shrink the clicked circle
-            selectCircle(d.mp_id, false);
-            // ;
-            d3.select("#explainer-panel")
-                .html(``);
-        })*/;
+            selectIndividualMPCircle(d);
+        });
 };
+
+// Function to select an individual MP's circle, highlight it and show their info in the explainer panel
+function selectIndividualMPCircle(mp) {
+    // mp should be the full MP data object
+    selectCircle(mp.mp_id, true);
+
+    d3.select("#explainer-header")
+        .text("MP Spotlight");
+
+    d3.select("#explainer-panel")
+        .html(mp['mp_infobox_html']);
+
+    if (window.innerWidth <= 820) {
+        document.getElementById('info-panel').classList.add('popup-open');
+    }
+}
 
 // Function to update the opacity of circles, highlighting or dimming them based on the inclusions list
 const updateCircleOpacity = (inclusions) => {
